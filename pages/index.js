@@ -1,33 +1,38 @@
-import Head from 'next/head'
-import { useEffect, useRef } from 'react'
-import gsap from 'gsap'
+import { useState } from 'react'
+import ArchiveModal from '../components/ArchiveModal'
+import projects from '../data/projects'
 
 export default function Home() {
-  const introRef = useRef()
-
-  useEffect(() => {
-    gsap.fromTo(introRef.current, { y: 50, opacity: 0 }, {
-      y: 0,
-      opacity: 1,
-      duration: 1.2,
-      ease: 'power2.out',
-    })
-  }, [])
+  const [active, setActive] = useState(null)
 
   return (
-    <>
-      <Head>
-        <title>Brent Ferguson Portfolio</title>
-      </Head>
-      <main className="min-h-screen px-8 py-24">
-        <section ref={introRef} className="max-w-3xl mx-auto text-center space-y-4">
-          <h1 className="text-5xl font-bold uppercase">Brent Ferguson</h1>
-          <p className="text-lg text-gray-600">Visual Designer • Photographer • DJ</p>
-          <p className="text-md text-gray-500 max-w-xl mx-auto">
-            Archive of selected works across photography, design, and sound. Built to grow.
-          </p>
-        </section>
-      </main>
-    </>
+    <main className="min-h-screen px-6 py-16">
+      <header className="mb-12">
+        <h1 className="text-4xl font-bold uppercase">Brent Ferguson</h1>
+        <p className="text-sm text-gray-500">Visual Designer / Photographer / DJ</p>
+      </header>
+
+      <section className="space-y-10">
+        {projects.map((p, i) => (
+          <div
+            key={i}
+            className="cursor-pointer group"
+            onClick={() => setActive(p)}
+          >
+            <div className="overflow-hidden rounded-lg shadow-md">
+              <img
+                src={p.image}
+                alt={p.title}
+                className="w-full h-[400px] object-cover transform transition-transform duration-500 group-hover:scale-105"
+              />
+            </div>
+            <h2 className="mt-4 text-xl font-semibold">{p.title}</h2>
+            <p className="text-sm text-gray-500">{p.description}</p>
+          </div>
+        ))}
+      </section>
+
+      {active && <ArchiveModal project={active} onClose={() => setActive(null)} />}
+    </main>
   )
 }
