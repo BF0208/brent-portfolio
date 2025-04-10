@@ -1,6 +1,6 @@
 export default function Contact() {
   return (
-    <main className="min-h-screen px-6 py-24 max-w-2xl mx-auto space-y-8">
+    <main className="min-h-screen px-6 py-24 max-w-2xl mx-auto space-y-8 text-black bg-[#f9f9f6]">
       <h1 className="text-4xl font-bold">Contact</h1>
       <p className="text-gray-600">Reach out for collaborations, commissions, or just to say hey.</p>
       <form className="flex flex-col gap-4">
@@ -12,5 +12,5 @@ export default function Contact() {
         </button>
       </form>
     </main>
-  )
+  );
 }

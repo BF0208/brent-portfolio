@@ -1,18 +1,17 @@
-import { useState } from 'react'
-import ArchiveModal from '../components/ArchiveModal'
-import projects from '../data/projects'
+import { useState } from 'react';
+import ArchiveModal from '../components/ArchiveModal';
+import projects from '../data/projects';
 
 export default function Home() {
-  const [active, setActive] = useState(null)
+  const [active, setActive] = useState(null);
 
   return (
-    <main className="min-h-screen px-6 py-16">
+    <main className="min-h-screen px-6 py-16 bg-[#f9f9f6] text-black">
       <header className="mb-12">
         <h1 className="text-4xl font-bold uppercase">Brent Ferguson</h1>
-        <p className="text-sm text-gray-500">Visual Designer / Photographer / DJ</p>
+        <p className="text-sm text-gray-600">Design / Photography / Sound</p>
       </header>
-
-      <section className="space-y-10">
+      <section className="space-y-12">
         {projects.map((p, i) => (
           <div
             key={i}
@@ -27,12 +26,11 @@ export default function Home() {
               />
             </div>
             <h2 className="mt-4 text-xl font-semibold">{p.title}</h2>
-            <p className="text-sm text-gray-500">{p.description}</p>
+            <p className="text-sm text-gray-600">{p.description}</p>
           </div>
         ))}
       </section>
-
       {active && <ArchiveModal project={active} onClose={() => setActive(null)} />}
     </main>
-  )
+  );
 }

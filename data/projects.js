@@ -19,6 +19,6 @@ const projects = [
       'https://images.unsplash.com/photo-1544005313-94ddf0286df2'
     ]
   }
-]
+];
 
 export default projects;

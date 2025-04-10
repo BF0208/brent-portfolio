@@ -22,5 +22,5 @@ export default function ArchiveModal({ project, onClose }) {
         </div>
       </div>
     </div>
-  )
+  );
 }
